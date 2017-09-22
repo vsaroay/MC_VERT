@@ -4,9 +4,9 @@ This is the project repository
 
 ## Group Members
 
-*Emad Aljamal
-*Calvin Huang
-*Ryan Morris
-*Terry Phun
-*Vikram Saroay
-*Maninder Singh
+* Emad Aljamal
+* Calvin Huang
+* Ryan Morris
+* Terry Phun
+* Vikram Saroay
+* Maninder Singh
