@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <title>MC-VERT Calendar</title>
+
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+    <script scr="Calendar.js"></script>
+    <style>
+        .wholeCal {
+            min-width: 350px;
+            width: 60%;
+            border-style: solid;
+            border-color: green;
+        }
+
+        .withCal {
+            text-align: right;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .weekdays {
+            text-align: left;
+            border: none;
+        }
+
+        #calendarMonth {
+            padding: 8px;
+            padding-left: 3.57%;
+            padding-right: 3.57%;
+        }
+
+        #calendarYear {
+            padding: 8px;
+            padding-left: 3.57%;
+            padding-right: 3.57%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 0px solid #FFFFFF;
+        }
+
+        .days td {
+            border: 1px solid #074D24;
+            height: 25px;
+            width: 14.285714%;
+            cursor: pointer;
+        }
+
+
+        .days td:hover {
+            color: red;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .timeSlot dt {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wholeCal w3-container w3-dropdown-click">
+        <header>
+            <div class="withCal">
+                <button id="prevMo">«</button>
+                <Span id="calendarMonth">
+                    ?#Error#?
+                </Span>
+                <button id=nextMo>»</button>
+                <Span id="calendarYear">
+                    ?#Error#?
+                </Span>
+            </div>
+        </header>
+        <TABLE id="Calendar">
+            <thead>
+                <TR class="weekDays">
+                    <TD ALIGN="center" COLSPAN="1">Sun</TD>
+                    <TD ALIGN="center" COLSPAN="1">Mon</TD>
+                    <TD ALIGN="center" COLSPAN="1">Tues</TD>
+                    <TD ALIGN="center" COLSPAN="1">Wed</TD>
+                    <TD ALIGN="center" COLSPAN="1">Thur</TD>
+                    <TD ALIGN="center" COLSPAN="1">Fri</TD>
+                    <TD ALIGN="center" COLSPAN="1">Sat</TD>
+                </TR>
+            </thead>
+            <tbody>
+                <TR class="days">
+                    <TD onclick="selectCell(this)" class="dropbtn" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                </TR>
+                <TR class="days">
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"> </TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"> </TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"> </TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"> </TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"> </TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"> </TD>
+                </TR>
+                <TR class="days">
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                </TR>
+                <TR class="days">
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                </TR>
+                <TR class="days">
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                </TR>
+                <TR class="days">
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                    <TD onclick="selectCell(this)" ALIGN="center"></TD>
+                </TR>
+            </tbody>
+        </TABLE>
+    </div>
+
+    <script type="text/javascript">
+        //Global Variables
+        var date = new Date(), curFullYear = date.getFullYear(), curMonth = date.getMonth();
+        var showingMonth; // 0-11
+        var showingYear; // 20...
+        var start;  //5th  cell
+        var end;  //36th cell
+
+        //Event listeners
+        document.getElementById("prevMo").addEventListener("click", prevMo);
+        document.getElementById("nextMo").addEventListener("click", nextMo);
+
+
+        //Function builds default view of Calendar upon loading page
+        window.onload = function () {
+            //console.log('hello');
+            console.log("Onload functioning");
+            showingMonth = curMonth;
+            showingYear = curFullYear;
+            firstDay = new Date(curFullYear, curMonth, 1);
+            lastDay = new Date(curFullYear, curMonth + 1, 0);
+            console.log(lastDay.toString());
+            var fDateNums = firstDay.toString().split(" ", 4);
+            //fDateNums[0] = weekday name (eg. mon, tue)
+            //fDateNums[1] = current month (three chars String)
+            //fDateNums[2] = first day of this month (always '01') 
+            //fDateNums[3] = current year
+            //console.log(fDateNums[0]);
+            //console.log(fDateNums[1]);
+            //console.log(fDateNums[2]);
+            //console.log(fDateNums[3]);
+            //console.log("SHOWING MONTH: " + showingMonth);
+
+            //cssDefault();
+            update();
+        }
+
+        /**  FUNCTION updates Calendar
+        */
+        function update() {
+            console.log(" *+* Updating +*+ ");
+            var firstDay = new Date(showingYear, showingMonth, 1);
+            var lastDay = new Date(showingYear, showingMonth + 1, 0);
+            var fDateNums = firstDay.toString().split(" ", 4); //array
+            var lastDateNums = lastDay.toString().split(" ", 4); //array
+
+            //fDateNums[0] = weekday name (eg. Mon, Tue)
+            //fDateNums[1] = current month (three chars String)
+            //fDateNums[2] = first day of this month (always '01') 
+            //fDateNums[3] = current year
+            //lastDateNums[2] = last day of month
+            console.log("\t 1st day name  " + fDateNums[0]);
+            //console.log("\t current month " + fDateNums[1]);
+            //console.log("\t current year  " + fDateNums[3]);
+            console.log("\t first - last: " + fDateNums[2] + "-" + lastDateNums[2]);
+            document.getElementById("calendarMonth").innerHTML = fDateNums[1];
+            document.getElementById("calendarYear").innerHTML = fDateNums[3];
+
+            if (0 == fDateNums[0].localeCompare("Sun")) {
+                start = 1;
+                end = parseInt(lastDateNums[2]);
+            } else
+                if (0 == fDateNums[0].localeCompare("Mon")) {
+                    start = 2;
+                    end = parseInt(lastDateNums[2]);
+                } else
+                    if (0 == fDateNums[0].localeCompare("Tue")) {
+                        start = 3;
+                        end = parseInt(lastDateNums[2]);
+                    } else
+                        if (0 == fDateNums[0].localeCompare("Wed")) {
+                            start = 4;
+                            end = parseInt(lastDateNums[2]);
+                        } else
+                            if (0 == fDateNums[0].localeCompare("Thu")) {
+                                start = 5;
+                                end = parseInt(lastDateNums[2]);
+                            } else
+                                if (0 == fDateNums[0].localeCompare("Fri")) {
+                                    start = 6;
+                                    end = parseInt(lastDateNums[2]);
+                                } else
+                                    if (0 == fDateNums[0].localeCompare("Sat")) {
+                                        start = 7;
+                                        end = parseInt(lastDateNums[2]);
+                                    }
+
+            console.log("StartDay: " + fDateNums[0])
+            //console.log(" ");
+            /**
+            *  loop (i=cell of first day ; i<days in month ; i++)
+            *   Sets cell dates
+            *   Sets cell color (grey = closed)
+            *   (orange = full) (blue = available)
+            *   -This will need access to the database to see if appointment times are full/available
+            */
+            for (var i = 0; i < 42; i++) {
+                var myCell = (i % 7);
+                var myRow = Math.floor(i / 7) + 1;
+                // console.log("ind/date/text: " + (i + 1));
+                // console.log("cell num: " + myCell + "  row: " + myRow);
+                //console.log(start + "<" + i + "<" + end);
+                // console.log(" ");
+                var myTable = document.getElementById("Calendar").rows[myRow].cells;
+                if (i < start - 1 || i > (end + start - 2)) {
+                    myTable[myCell].innerHTML = "";
+                    myTable[myCell].style.backgroundColor = "lightGrey";
+                    //myTable[myCell].style.borderColor = "lightGrey";
+
+                } else {
+                    if (myCell > 5 || myCell == 0) {
+                        myTable[myCell].style.backgroundColor = "lightGrey";
+                        //myTable[myCell].style.borderColor = "white";
+
+                    } else {
+                        myTable[myCell].style.backgroundColor = "white";
+                        //myTable[myCell].style.borderColor = "black";
+                    }
+                    myTable[myCell].innerHTML = ((i - start) + 2);
+                }
+            }
+
+        }
+
+        function prevMo() {
+            showingMonth--;
+            if (showingMonth < 0) {
+                showingMonth = 11;
+                showingYear--;
+            }
+            //console.log("SHOWING MONTH: " + showingMonth);
+            update();
+        }
+        function nextMo() {
+            showingMonth++;
+            if (showingMonth > 11) {
+                showingMonth = 0;
+                showingYear++;
+            }
+            update();
+            //console.log("SHOWING MONTH: " + showingMonth);
+        }
+
+
+        function cssDefault() {
+            for (var i = 7; i < 42; i++) {
+                var myCell = (i % 7);
+                var myRow = Math.floor(i / 7) + 1;
+                var myTable = document.getElementById("Calendar").rows[myRow].cells;
+                myTable[myCell].style.border = "border-collapse";
+                myTable[myCell].style.padding = "10px";
+            }
+        }
+
+
+        function selectCell(cell) {
+            /** loop all cells and unbold
+            *
+            */
+            myFunction()
+
+            for (var i = 0; i < 42; i++) {
+                var myCell = (i % 7);
+                var myRow = Math.floor(i / 7) + 1;
+                var myTable = document.getElementById("Calendar").rows[myRow].cells;
+                myTable[myCell].style.border = "1px solid black";
+            }
+            //cell.innerHTML = "HI";
+            cell.style.border = "2px solid orange";
+            //cell.style.background - color = "red";
+            console.log(cell);
+
+        }
+        function myFunction() {
+            var x = document.getElementById("Demo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+
+    <div id="Demo" class="w3-container w3-dropdown-content w3-bar-block w3-border">
+        <div ALIGN="Left">Date here</div>
+        <div class="w3-container w3-border" ALIGN="Center"> <span>Counselor Name</span> </div>
+        <table>
+            <TR class="timeSlot">
+                <TD onclick="selectTime(this)" ALIGN="Right">8:00</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">8:15</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">8:30</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">8:45</TD>
+            </TR>
+            <TR class="timeSlot">
+                <TD onclick="selectTime(this)" ALIGN="Right">9:15</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">9:30</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">9:45</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">9:00</TD>
+            </TR>
+            <TR class="timeSlot">
+                <TD onclick="selectTime(this)" ALIGN="Right">10:15</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">10:30</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">10:45</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">10:00</TD>
+            </TR>
+            <TR class="timeSlot">
+                <TD onclick="selectTime(this)" ALIGN="Right">11:15</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">11:30</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">11:45</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">11:00</TD>
+            </TR>
+            <TR class="timeSlot">
+                <TD onclick="selectTime(this)" ALIGN="Right">12:00</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">12:15</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">12:30</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">12:45</TD>
+            </TR>
+            <TR class="timeSlot">
+                <TD onclick="selectTime(this)" ALIGN="Right">1:00</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">1:15</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">1:30</TD>
+                <TD onclick="selectTime(this)" ALIGN="Right">1:45</TD>
+            </TR>
+            <TR class="timeSlot">
+                <TD onclick="selectTime(this)" ALIGN="right">2:00</TD>
+                <TD onclick="selectTime(this)" ALIGN="right">2:15</TD>
+                <TD onclick="selectTime(this)" ALIGN="right">2:30</TD>
+                <TD onclick="selectTime(this)" ALIGN="right">2:45</TD>
+            </TR>
+
+        </table>
+        <button id="closePopup" onclick="myFunction()" class="w3-button w3-black">Close Popup</button>
+        <button id="closePopup" onclick="SumbitAppointment()" class="w3-button w3-black">Sumbit Appointment</button>
+    </div>
+</body>
+
+</HTML>
