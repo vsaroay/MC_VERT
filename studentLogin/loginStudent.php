@@ -1,6 +1,12 @@
+<?php
+    include_once '../includes/dbh.inc.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Login Page</title>
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="login_style.css" type="text/css">
     </head>
@@ -32,10 +38,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                        <div class="col-lg-7 col-md-7 col-sm-7">
                             <button class="btn btn-md btn-primary btn-block login" type="submit">Login</button>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <button class="btn btn-md btn-warning password">Manage Password</button>
                         </div>
                     </div>
