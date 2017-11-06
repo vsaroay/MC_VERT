@@ -1,5 +1,11 @@
 
 
+
+/** Global Variables are declares in Calendar.HTML
+ *
+ */
+
+
 //Function builds default view of Calendar upon loading page
 window.onload = function () {
     console.log("Onload functioning");
@@ -19,7 +25,7 @@ window.onload = function () {
     //console.log(fDateNums[3]);
     //console.log("SHOWING MONTH: " + showingMonth);
 
-    //cssDefault();
+    cssDefault();
     update();
 }
 
@@ -30,7 +36,7 @@ function update() {
     console.log("+*+ Updating +*+ ");
     var firstDay = new Date(showingYear, showingMonth, 1);
     var lastDay = new Date(showingYear, showingMonth + 1, 0);
-    var fDateNums = firstDay.toString().split(" ", 4); //array
+    fDateNums = firstDay.toString().split(" ", 4); //array First date numbers
     var lastDateNums = lastDay.toString().split(" ", 4); //array
 
     //fDateNums[0] = weekday name (eg. Mon, Tue)
@@ -80,17 +86,19 @@ function update() {
     *  loop (i=cell of first day ; i<days in month ; i++)
     *   Sets cell dates
     *   Sets cell color (grey = closed)
-    *   (orange = full) (blue = available)
+    *   (yellow = less than half full) (red = greater than half full)
+    *   (white = available)
     *   -This will need access to the database to see if appointment times are full/available
     */
     for (var i = 0; i < 42; i++) {
         var myCell = (i % 7);
-        var myRow = Math.floor(i / 7) + 1;
+        var myRow = Math.floor(i / 7) + 1; //rows 1-6
+        //console.log("i= " + i + "     myRow= " + myRow);
+        var myTable = document.getElementById("Calendar").rows[myRow].cells;     //table of rows 1-6   
         // console.log("ind/date/text: " + (i + 1));
         // console.log("cell num: " + myCell + "  row: " + myRow);
         // console.log(start + "<" + i + "<" + end);
         // console.log(" ");
-        var myTable = document.getElementById("Calendar").rows[myRow].cells;
         if (i < start - 1 || i > (end + start - 2)) {
             myTable[myCell].innerHTML = "";
             myTable[myCell].style.backgroundColor = "lightGrey";
@@ -110,6 +118,11 @@ function update() {
     }
 }//end update
 
+/*  Function prevMo()
+    Called when the next month button is clicked 
+    This changes the Global Var "showingMonth" 
+    then it calls updateCalendar 
+*/
 function prevMo() {
     showingMonth--;
     if (showingMonth < 0) {
@@ -119,6 +132,11 @@ function prevMo() {
     //console.log("SHOWING MONTH: " + showingMonth);
     update();
 }
+/*  Function nextMo()
+    Called when the next month button is clicked 
+    This changes the Global Var "showingMonth" 
+    then it calls updateCalendar
+*/
 function nextMo() {
     showingMonth++;
     if (showingMonth > 11) {
@@ -129,8 +147,12 @@ function nextMo() {
     //console.log("SHOWING MONTH: " + showingMonth);
 }
 
+/*
+    Function cssDefault()
+    Overrides default size of cells Via style.padding (in addition to text size)
+*/
 function cssDefault() {
-    for (var i = 7; i < 42; i++) {
+    for (var i = 0; i < 42; i++) {
         var myCell = (i % 7);
         var myRow = Math.floor(i / 7) + 1;
         var myTable = document.getElementById("Calendar").rows[myRow].cells;
@@ -139,18 +161,27 @@ function cssDefault() {
     }
 }//end css default
 
+
+/** function selectCell()
+ * Called when a sell from main Calendar is clicked
+ * @param cell data passed
+ * 
+ * It also loops all cells and unbolds the border
+ * Then it orange bolds the cell border of one clicked.
+*/
 function selectCell(cell) {
-    /** loop all cells and unbold
-    *
-    */
-    console.log("this cell is: " + cell);
-    if (currentCell == null) {
-        console.log("cell= " + cell.value);
-        currentCell == cell;
-        myFunction();
-    } else if (currentCell != cell) {
-        //myFunction();
+    console.log("this cell is: " + cell.innerHTML);
+
+    if (cell.innerHTML == "" || cell.style.backgroundColor == "lightgrey") {
+        currDay = -1;
+        return
     }
+    if (currDay.innerHTML != cell.innerHTML) {
+        currDay = cell.innerHTML;
+        openDropDown();
+        upDateTimeSlots();
+    }
+
     for (var i = 0; i < 42; i++) {
         var myCell = (i % 7);
         var myRow = Math.floor(i / 7) + 1;
@@ -163,21 +194,87 @@ function selectCell(cell) {
     console.log(cell);
 }//end selectCell()
 
+
+/** function upDateTimeStops
+ * called when a new day is selected
+ *  
+ * updates the "date here" of timeSlots
+ * * Unbolds all cells
+ * loops through var array monthlyAppointments to find timeSlots that are taken
+ * Colors Cellbackgrounds of taken slots 
+ */
+function upDateTimeSlots() {
+
+    var month = fDateNums[1];
+    var year = fDateNums[3];
+
+    var date = document.getElementById("TimeSlotsDate");
+    date.innerText = "   " + month + " " + currDay + ", " + year;
+
+    var myCell;
+    var myRow;
+    for (i = 0; i < 28; i++) {
+        myCell = (i % 4);
+        myRow = Math.floor(i / 4) + 1;
+        //var myTable = document.getElementById("TimeSlots").rows[myRow].cells;     //table of rows 0-4 
+
+    }
+
+
+}
+
 function selectTime(cell) {
     cell.style.border = "2px solid orange";
 }
 
-function myFunction() {
 
-    var x = document.getElementById("Demo");
-    console.log();
+
+function openDropDown() {
+    var x = document.getElementById("DropDown");
+    console.log("Open Drop Down");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
+    }
+}
+function closeDropDown() {
+    var x = document.getElementById("DropDown");
+    console.log("Close Drop Down");
+    if (x.className.indexOf("w3-show") == -1) {
+        return;
     } else {
         x.className = x.className.replace(" w3-show", "");
     }
+
 }
 
-function SumbitAppointment() {
 
+/** Function loadAppointments()
+ *  loads all appointments of current Month into the global array mothlyAppointments
+ *  Use Ajax JS to Call PHP script 
+ * @param showingMonth
+ */
+function loadAppointments() {
+    new Ajax.Request('Appointment.php', {
+        onSuccess: function (xmlHTTP) {
+            eval(mlHTTP.responseText);
+        }
+    });
+}
+
+/** Function SubmitAppointment()
+ * Take parameters and uses Ajax to call PHP Script
+ * @param   id
+            cal_date
+            timeSlot
+            status
+            appType
+            studentNotes
+            counselorNotes
+ */
+function SubmitAppointment() {
+    new Ajax.Request('Appointment.php', {
+        onSuccess: function (xmlHTTP) {
+            eval(mlHTTP.responseText);
+        }
+    });
 }

@@ -6,6 +6,7 @@
 
     <!-- <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"> -->
     <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+    <script src="jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="Calendar.css" type="text/css">
     <script type="text/javascript" src="Calendar.js"></script>
 </head>
@@ -16,11 +17,11 @@
             <div class="withCal">
                 <button id="prevMo">«</button>
                 <Span id="calendarMonth">
-                    ?#Error#?
+                    ?#Error Month#?
                 </Span>
                 <button id=nextMo>»</button>
                 <Span id="calendarYear">
-                    ?#Error#?
+                    ?#Error Year#?
                 </Span>
             </div>
         </header>
@@ -95,14 +96,75 @@
         </TABLE>
     </div>
 
+    <div id="DropDown" class="w3-container w3-dropdown-content w3-bar-block w3-border">
+        <div>
+            <Span ALIGN="Left">
+                
+            </Span>
+            <Span id="TimeSlotsDate">
+                ?#Error Date here#?
+            </Span>
+        </div>
+        <div class="w3-container w3-border" ALIGN="Center"> <span>Counselor Name</span> </div>
+        <table id="TimeSlots">
+            <tbody>
+                <TR class="timeSlot">
+                    <TD onclick="selectTime(this)" ALIGN="Center">8:00</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">8:15</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">8:30</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">8:45</TD>
+                </TR>
+                <TR class="timeSlot">
+                    <TD onclick="selectTime(this)" ALIGN="Center">9:15</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">9:30</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">9:45</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">9:00</TD>
+                </TR>
+                <TR class="timeSlot">
+                    <TD onclick="selectTime(this)" ALIGN="Center">10:15</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">10:30</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">10:45</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">10:00</TD>
+                </TR>
+                <TR class="timeSlot">
+                    <TD onclick="selectTime(this)" ALIGN="Center">11:15</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">11:30</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">11:45</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">11:00</TD>
+                </TR>
+                <TR class="timeSlot">
+                    <TD onclick="selectTime(this)" ALIGN="Center">12:00</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">12:15</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">12:30</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">12:45</TD>
+                </TR>
+                <TR class="timeSlot">
+                    <TD onclick="selectTime(this)" ALIGN="Center">1:00</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">1:15</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">1:30</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">1:45</TD>
+                </TR>
+                <TR class="timeSlot">
+                    <TD onclick="selectTime(this)" ALIGN="Center">2:00</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">2:15</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">2:30</TD>
+                    <TD onclick="selectTime(this)" ALIGN="Center">2:45</TD>
+                </TR>
+            </tbody>
+        </table>
+        <button id="closePopup" onclick="closeDropDown()" class="w3-button w3-black">Close Popup</button>
+        <button id="closePopup" onclick="SubmitAppointment()" class="w3-button w3-black">Submit Appointment</button>
+    </div>
+
     <script type="text/javascript">
         //Global Variables
         var date = new Date(), curFullYear = date.getFullYear(), curMonth = date.getMonth();
         var showingMonth; // 0-11
         var showingYear; // 20...
-        var currDay;
-        var currTime;
-        var currentCell;
+        var fDateNums;
+        var currDay = "-1";    // The day(cell) that has been selected in Calendar. Use .innerHTML to get cell value
+        var currTime = "-1";   // The timeSlot (cell) that has been selected in dropDownTimes
+        var monthlyAppointments = new Array(); // array has all appointments for this month (showingMonth)
 
         var start;  //5th  cell
         var end;  //36th cell
@@ -113,57 +175,7 @@
         document.getElementById("nextMo").addEventListener("click", nextMo);
     </script>
 
-    <div id="Demo" class="w3-container w3-dropdown-content w3-bar-block w3-border">
-        <div ALIGN="Left">Date here</div>
-        <div class="w3-container w3-border" ALIGN="Center"> <span>Counselor Name</span> </div>
-        <table>
-            <TR class="timeSlot">
-                <TD onclick="selectTime(this)" ALIGN="Center">8:00</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">8:15</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">8:30</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">8:45</TD>
-            </TR>
-            <TR class="timeSlot">
-                <TD onclick="selectTime(this)" ALIGN="Center">9:15</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">9:30</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">9:45</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">9:00</TD>
-            </TR>
-            <TR class="timeSlot">
-                <TD onclick="selectTime(this)" ALIGN="Center">10:15</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">10:30</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">10:45</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">10:00</TD>
-            </TR>
-            <TR class="timeSlot">
-                <TD onclick="selectTime(this)" ALIGN="Center">11:15</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">11:30</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">11:45</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">11:00</TD>
-            </TR>
-            <TR class="timeSlot">
-                <TD onclick="selectTime(this)" ALIGN="Center">12:00</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">12:15</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">12:30</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">12:45</TD>
-            </TR>
-            <TR class="timeSlot">
-                <TD onclick="selectTime(this)" ALIGN="Center">1:00</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">1:15</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">1:30</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">1:45</TD>
-            </TR>
-            <TR class="timeSlot">
-                <TD onclick="selectTime(this)" ALIGN="Center">2:00</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">2:15</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">2:30</TD>
-                <TD onclick="selectTime(this)" ALIGN="Center">2:45</TD>
-            </TR>
 
-        </table>
-        <button id="closePopup" onclick="myFunction()" class="w3-button w3-black">Close Popup</button>
-        <button id="closePopup" onclick="SumbitAppointment()" class="w3-button w3-black">Sumbit Appointment</button>
-    </div>
 </body>
 
 </HTML>
