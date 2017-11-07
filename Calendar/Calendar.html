@@ -14,10 +14,7 @@
 </head>
 
 <body>
-
-    <div id="includedContent"></div>
-
-    <div class="wholeCal w3-container w3-dropdown-click">
+    <div class="wholeCal w3-container">
         <header>
             <div class="withCal">
                 <button id="prevMo">«</button>
@@ -194,6 +191,8 @@
         var currDay = "-1";    // The day(cell) that has been selected in Calendar. Use .innerHTML to get cell value
         var currTime = "-1";   // The timeSlot (cell) that has been selected in dropDownTimes
         var monthlyAppointments = new Array(); // array has all appointments for this month (showingMonth)
+        var counselor = "#Rachel#";
+        var counselingType = "#General Counseling#";
         var studentNotes = "No Notes Yet";
 
         var start;  //5th  cell

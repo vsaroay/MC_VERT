@@ -176,7 +176,6 @@ function selectCell(cell) {
     //console.log("this cell is: " + cell.innerHTML);
 
     if (cell.innerHTML == "" || cell.style.backgroundColor == "lightgrey") {
-        currDay = -1;
         return
     }
     if (currDay.innerHTML != cell.innerHTML) {
@@ -309,9 +308,9 @@ function SubmitAppointment() {
 function activateFinalSubmitOverlay() {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("submitFormName").innerText = "Ryan Morris";
-    document.getElementById("submitFormType").innerText = "General Counseling";
+    document.getElementById("submitFormType").innerText = counselingType;
     document.getElementById("VerifyDate").innerText = "On: " + fDateNums[1] + " " + currDay + ", " + fDateNums[3];
-    document.getElementById("VerifyTime").innerText = "At: " + currTime;
+    document.getElementById("VerifyTime").innerText = "With " + counselor + " At: " + currTime;
 
 
 }
