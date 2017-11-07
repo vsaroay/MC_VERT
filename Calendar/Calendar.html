@@ -6,13 +6,15 @@
 
     <!-- <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"> -->
     <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
-    <script src="jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="Calendar.css" type="text/css">
     <script type="text/javascript" src="Calendar.js"></script>
+
+
 </head>
 
 <body>
-    <div class="wholeCal w3-container w3-dropdown-click">
+    <div class="wholeCal w3-container">
         <header>
             <div class="withCal">
                 <button id="prevMo">«</button>
@@ -97,7 +99,7 @@
     </div>
 
     <div id="DropDown" class="w3-container w3-dropdown-content w3-bar-block w3-border">
-        <div>
+        <div id="TimeSlotDateDiv">
             <Span ALIGN="Left">
                 
             </Span>
@@ -153,8 +155,32 @@
             </tbody>
         </table>
         <button id="closePopup" onclick="closeDropDown()" class="w3-button w3-black">Close Popup</button>
-        <button id="closePopup" onclick="SubmitAppointment()" class="w3-button w3-black">Submit Appointment</button>
+        <button id="submitAppointment" onclick="SubmitAppointment()" class="w3-button w3-black">Submit Appointment</button>
     </div>
+
+    <div id="overlay">
+        <div id="submissionForm" class="w3-container">
+
+            <body>
+
+                <Span id="submitFormName" ALIGN="LEFT">  ?#Error Name#? </Span>
+                <Span id="submitFormType" ALIGH="RIGHT">  ?#Error CounselType#?     </Span>
+                <div id="VerifyYourAppointment" ALIGN="LEFT"> Verify your appointment! </div>
+
+                <p id="VerifyDate"> ?#Error Date#?</p>
+                <span id="VerifyTime"> at ?#Error TimeSlot#?</span>
+                <p> This appointment is 15 minutes long</p>
+                <div class "w3-container w3-border">
+                    For extra care from your counselor
+                    <textarea id="noteToCounselor" style="width:385px; height:75px" maxlength="120" placeholder="..describe what we can help you with!"></textarea>
+                </div>
+                <button id="closeOverlay" onclick="finalSubmitOff()" class="w3-button w3-black" align="left">Close</button>
+                <button id="finalSubmission" onclick="finalSubmitAppointment()" class="w3-button w3-black" align="right">Submit Appointment</button>
+
+            </body>
+        </div>
+    </div>
+
 
     <script type="text/javascript">
         //Global Variables
@@ -165,6 +191,9 @@
         var currDay = "-1";    // The day(cell) that has been selected in Calendar. Use .innerHTML to get cell value
         var currTime = "-1";   // The timeSlot (cell) that has been selected in dropDownTimes
         var monthlyAppointments = new Array(); // array has all appointments for this month (showingMonth)
+        var counselor = "#Rachel#";
+        var counselingType = "#General Counseling#";
+        var studentNotes = "No Notes Yet";
 
         var start;  //5th  cell
         var end;  //36th cell

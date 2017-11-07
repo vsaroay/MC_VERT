@@ -69,3 +69,45 @@ table {
     color: red;
     cursor: pointer;
 }
+#TimeSlotsDateDiv {
+ padding-bottom: 50px;   
+ padding: 8px; 
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    /* cursor: pointer; */
+}
+#submissionForm{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #030000;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    background-color: #EBFFF8;
+    border: 5px solid #A969FC;
+}
+#submitFormName{
+    padding-top: 10px;
+    
+    padding-right: 25%;
+    font-size: 18px;
+    
+}
+#submitFormType{
+    font-size: 17px;
+}
+#VerifyYourAppointment{
+    color: #025AFC;
+    font-size: 25px;
+}

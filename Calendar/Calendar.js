@@ -24,7 +24,6 @@ window.onload = function () {
     //console.log(fDateNums[2]);
     //console.log(fDateNums[3]);
     //console.log("SHOWING MONTH: " + showingMonth);
-
     cssDefault();
     update();
 }
@@ -177,7 +176,6 @@ function selectCell(cell) {
     //console.log("this cell is: " + cell.innerHTML);
 
     if (cell.innerHTML == "" || cell.style.backgroundColor == "lightgrey") {
-        currDay = -1;
         return
     }
     if (currDay.innerHTML != cell.innerHTML) {
@@ -202,12 +200,15 @@ function selectCell(cell) {
 /** function upDateTimeStops
  * called when a new day is selected
  *  
+ * resets the currTime to default -1
  * updates the "date here" of timeSlots
  * * Unbolds all cells
  * loops through var array monthlyAppointments to find timeSlots that are taken
  * Colors Cellbackgrounds of taken slots 
  */
 function upDateTimeSlots(cell) {
+    currTime = "-1";
+
     var month = fDateNums[1];
     var year = fDateNums[3];
     var date = document.getElementById("TimeSlotsDate");
@@ -226,7 +227,6 @@ function upDateTimeSlots(cell) {
     }
 
 }
-
 
 function selectTime(cell) {
     var myCell;
@@ -262,7 +262,6 @@ function closeDropDown() {
     }
 }
 
-
 /** Function loadAppointments()
  *  loads all appointments of current Month into the global array mothlyAppointments
  *  Use Ajax JS to Call PHP script 
@@ -278,8 +277,8 @@ function loadAppointments() {
 
 /** Function SubmitAppointment()
  * Take parameters and uses Ajax to call PHP Script
- * @param   id
-            cal_date
+ *          id
+            cal_date // year month day
             timeSlot
             status
             appType
@@ -287,9 +286,52 @@ function loadAppointments() {
             counselorNotes
  */
 function SubmitAppointment() {
-    new Ajax.Request('Appointment.php', {
-        onSuccess: function (xmlHTTP) {
-            eval(mlHTTP.responseText);
-        }
-    });
+
+    console.log(" *+*Submitting appointment*+* ");
+    console.log("Year " + showingYear + " Month: " + showingMonth + " day: " + currDay + " timeSlot: " + currTime +
+        "  Status: 1 " + " appType: to be decided studentNotes" + studentNotes);
+
+    if (currTime === "-1") {
+        alert("\tTo schedule an Appointment:\n\t\tPlease Select an Appointment Time");
+        return;
+    }
+
+    activateFinalSubmitOverlay()
 }
+
+/** Function activateFinalSubmitOverlay()
+ *  //fDateNums[0] = weekday name (eg. Mon, Tue)
+    //fDateNums[1] = current month (three chars String)
+    //fDateNums[2] = first day of this month (always '01') 
+    //fDateNums[3] = current year
+ */
+function activateFinalSubmitOverlay() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("submitFormName").innerText = "Ryan Morris";
+    document.getElementById("submitFormType").innerText = counselingType;
+    document.getElementById("VerifyDate").innerText = "On: " + fDateNums[1] + " " + currDay + ", " + fDateNums[3];
+    document.getElementById("VerifyTime").innerText = "With " + counselor + " At: " + currTime;
+
+
+}
+
+function finalSubmitOff() {
+    document.getElementById("overlay").style.display = "none";
+
+}
+
+
+function finalSubmitAppointment() {
+    finalSubmitOff()
+    studentNotes = document.getElementById("noteToCounselor").innerText;
+    console.log(studentNotes);
+    alert("Appointment Submitted");
+    /*new Ajax.Request('Appointment.php', {
+            onSuccess: function (xmlHTTP) {
+                eval(mlHTTP.responseText);
+            }
+        });*/
+
+}
+
+
