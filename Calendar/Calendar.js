@@ -263,8 +263,7 @@ function closeDropDown() {
 }
 
 /** Function loadAppointments()
- *  loads all appointments of current Month into the global array mothlyAppointments
- *  Use Ajax JS to Call PHP script 
+ *  Use JS Ajax JS to Call PHP script 
  * @param showingMonth
  */
 function loadAppointments() {
@@ -276,14 +275,7 @@ function loadAppointments() {
 }
 
 /** Function SubmitAppointment()
- * Take parameters and uses Ajax to call PHP Script
- *          id
-            cal_date // year month day
-            timeSlot
-            status
-            appType
-            studentNotes
-            counselorNotes
+ * 
  */
 function SubmitAppointment() {
 
@@ -292,7 +284,7 @@ function SubmitAppointment() {
         "  Status: 1 " + " appType: to be decided studentNotes" + studentNotes);
 
     if (currTime === "-1") {
-        alert("\tTo schedule an Appointment:\n\t\tPlease Select an Appointment Time");
+        alert("\tTo schedule an Appointment:\n\t\tPlease Click on an Appointment Time");
         return;
     }
 
@@ -320,7 +312,16 @@ function finalSubmitOff() {
 
 }
 
-
+/** function finalSubmitAppointment()
+ * sets parameters and uses Ajax to call PHP Script
+*          id
+           cal_date // year month day
+           timeSlot
+           status
+           appType
+           studentNotes
+           counselorNotes
+*/
 function finalSubmitAppointment() {
     finalSubmitOff()
     studentNotes = document.getElementById("noteToCounselor").innerText;

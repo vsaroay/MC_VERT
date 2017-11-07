@@ -94,8 +94,8 @@ table {
     color: #030000;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
-    background-color: #EBFFF8;
-    border: 5px solid #A969FC;
+    background-color: #FEFFF5;
+    border: 2px solid #24A724;
 }
 #submitFormName{
     padding-top: 10px;
@@ -108,6 +108,6 @@ table {
     font-size: 17px;
 }
 #VerifyYourAppointment{
-    color: #025AFC;
+    color: #7A04C9;
     font-size: 25px;
 }
