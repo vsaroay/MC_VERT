@@ -8,32 +8,21 @@
         <title>Login Page</title>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <link rel="stylesheet" href="login_style.css" type="text/css">
+        <link rel="stylesheet" href="c_login_style.css" type="text/css">
     </head>
     <body>
         <div class="container">
             <div class="login-container">
-		<div class="logo-image">
-                    <img alt="Sac State Logo" class="logo" src="logo.gif" width="50%">
+				<div class="logo-image">
+                	<img alt="Admin Logo" class="logo" src="http://www.enterprises.csus.edu/wp-content/themes/main2012/library/images/ueimainLogo@2x.png" width="50%">
                 </div>
-                <form class="form-login" action="../includes/studentLoginLogic.php" method="POST">
+                <form class="form-login" method="POST" action="../includes/counselorLoginLogic.php">
                     <div class="form-group">
-                        <!--<label for="inputUsername">Username</label>
-                        <br>-->
                         <input name="username" class="form-control" type="text" id="inputUsername" placeholder="Username" required="" autofocus="">
                     </div>
                     
                     <div class="form-group">
-                        <!--<label for="inputPassword">Password</label>
-                        <br>-->
                         <input name="password" class="form-control" type="password" id="inputPassword" placeholder="Password" required="">
-                    </div>
-                    
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="remember-me">
-                            Remember me
-                        </label>
                     </div>
 
                     <div class="row">
