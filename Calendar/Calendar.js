@@ -102,6 +102,8 @@ function update() {
         if (i < start - 1 || i > (end + start - 2)) {
             myTable[myCell].innerHTML = "";
             myTable[myCell].style.backgroundColor = "lightGrey";
+            myTable[myCell].style.backgroundColor = "lightGrey";
+
             //myTable[myCell].style.borderColor = "lightGrey";
 
         } else {
@@ -131,6 +133,7 @@ function prevMo() {
     }
     //console.log("SHOWING MONTH: " + showingMonth);
     update();
+    closeDropDown();
 }
 /*  Function nextMo()
     Called when the next month button is clicked 
@@ -144,6 +147,7 @@ function nextMo() {
         showingYear++;
     }
     update();
+    closeDropDown();
     //console.log("SHOWING MONTH: " + showingMonth);
 }
 
@@ -170,7 +174,7 @@ function cssDefault() {
  * Then it orange bolds the cell border of one clicked.
 */
 function selectCell(cell) {
-    console.log("this cell is: " + cell.innerHTML);
+    //console.log("this cell is: " + cell.innerHTML);
 
     if (cell.innerHTML == "" || cell.style.backgroundColor == "lightgrey") {
         currDay = -1;
@@ -179,7 +183,7 @@ function selectCell(cell) {
     if (currDay.innerHTML != cell.innerHTML) {
         currDay = cell.innerHTML;
         openDropDown();
-        upDateTimeSlots();
+        upDateTimeSlots(cell);
     }
 
     for (var i = 0; i < 42; i++) {
@@ -203,31 +207,43 @@ function selectCell(cell) {
  * loops through var array monthlyAppointments to find timeSlots that are taken
  * Colors Cellbackgrounds of taken slots 
  */
-function upDateTimeSlots() {
-
+function upDateTimeSlots(cell) {
     var month = fDateNums[1];
     var year = fDateNums[3];
-
     var date = document.getElementById("TimeSlotsDate");
     date.innerText = "   " + month + " " + currDay + ", " + year;
 
     var myCell;
     var myRow;
+    var myTable;
     for (i = 0; i < 28; i++) {
         myCell = (i % 4);
-        myRow = Math.floor(i / 4) + 1;
-        //var myTable = document.getElementById("TimeSlots").rows[myRow].cells;     //table of rows 0-4 
-
+        myRow = Math.floor(i / 4);
+        myTable = document.getElementById("TimeSlots").rows[myRow].cells[myCell];     //table of cells 0-4 
+        //console.log("my table= " + myTable.innerHTML);
+        //if (cell != myTable.innerHTML){
+        myTable.style.border = "1px solid white";
     }
 
-
 }
+
 
 function selectTime(cell) {
+    var myCell;
+    var myRow;
+    var myTable;
+    for (i = 0; i < 28; i++) {
+        myCell = (i % 4);
+        myRow = Math.floor(i / 4);
+        myTable = document.getElementById("TimeSlots").rows[myRow].cells[myCell];     //table of cells 0-4 
+        //console.log("my table= " + myTable.innerHTML);
+        //if (cell != myTable.innerHTML){
+        myTable.style.border = "1px solid white";
+    }
     cell.style.border = "2px solid orange";
+    currTime = cell.innerText;
+    console.log("currTime= " + currTime);
 }
-
-
 
 function openDropDown() {
     var x = document.getElementById("DropDown");
@@ -244,7 +260,6 @@ function closeDropDown() {
     } else {
         x.className = x.className.replace(" w3-show", "");
     }
-
 }
 
 

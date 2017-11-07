@@ -63,7 +63,10 @@ table {
     text-decoration: none;
     display: block;
 }
-
-.timeSlot dt {
-    border: 1px solid black;
+#TimeSlots td {
+    padding: 2px;
+}
+#TimeSlots td:hover {
+    color: red;
+    cursor: pointer;
 }
