@@ -31,7 +31,7 @@ function appsInMonth(){
 
 
 
-
+//******************** functions below are Not priority until after november 10th ******************************
 
 /* function delete Appointment()
 *

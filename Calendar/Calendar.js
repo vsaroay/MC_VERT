@@ -302,17 +302,18 @@ function SubmitAppointment() {
         }
     });*/
 
-    //activateFinalSubmitOverlay()
+    activateFinalSubmitOverlay()
 }
 
 
 function activateFinalSubmitOverlay() {
-    document.getElementById("FinalSubmitOverLay").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+    console.log("Style + block yo");
 }
 
 function finalSubmitOff() {
-    document.getElementById("FinalSubmitOverLay").style.display = "none";
-}
+    document.getElementById("overlay").style.display = "none";
+    console.log("Style + NONE");
 
-//************* TESTING
+}
 
