@@ -296,24 +296,43 @@ function SubmitAppointment() {
         alert("\tTo schedule an Appointment:\n\t\tPlease Select an Appointment Time");
         return;
     }
-    /*new Ajax.Request('Appointment.php', {
-        onSuccess: function (xmlHTTP) {
-            eval(mlHTTP.responseText);
-        }
-    });*/
 
     activateFinalSubmitOverlay()
 }
 
-
+/** Function activateFinalSubmitOverlay()
+ *  //fDateNums[0] = weekday name (eg. Mon, Tue)
+    //fDateNums[1] = current month (three chars String)
+    //fDateNums[2] = first day of this month (always '01') 
+    //fDateNums[3] = current year
+ */
 function activateFinalSubmitOverlay() {
     document.getElementById("overlay").style.display = "block";
-    console.log("Style + block yo");
+    document.getElementById("submitFormName").innerText = "Ryan Morris";
+    document.getElementById("submitFormType").innerText = "General Counseling";
+    document.getElementById("VerifyDate").innerText = "On: " + fDateNums[1] + " " + currDay + ", " + fDateNums[3];
+    document.getElementById("VerifyTime").innerText = "At: " + currTime;
+
+
 }
 
 function finalSubmitOff() {
     document.getElementById("overlay").style.display = "none";
-    console.log("Style + NONE");
 
 }
+
+
+function finalSubmitAppointment() {
+    finalSubmitOff()
+    studentNotes = document.getElementById("noteToCounselor").innerText;
+    console.log(studentNotes);
+    alert("Appointment Submitted");
+    /*new Ajax.Request('Appointment.php', {
+            onSuccess: function (xmlHTTP) {
+                eval(mlHTTP.responseText);
+            }
+        });*/
+
+}
+
 

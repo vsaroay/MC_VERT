@@ -160,11 +160,31 @@
         <button id="closePopup" onclick="closeDropDown()" class="w3-button w3-black">Close Popup</button>
         <button id="submitAppointment" onclick="SubmitAppointment()" class="w3-button w3-black">Submit Appointment</button>
     </div>
-    <div id="overlay" onclick="off()">
-        <div id="text">Overlay Text</div>
 
+    <div id="overlay">
+        <div id="submissionForm" class="w3-container">
 
+            <body>
+
+                <Span id="submitFormName" ALIGN="LEFT">  ?#Error Name#? </Span>
+                <Span id="submitFormType" ALIGH="RIGHT">  ?#Error CounselType#?     </Span>
+                <div id="VerifyYourAppointment" ALIGN="LEFT"> Verify your appointment! </div>
+
+                <p id="VerifyDate"> ?#Error Date#?</p>
+                <span id="VerifyTime"> at ?#Error TimeSlot#?</span>
+                <p> This appointment is 15 minutes long</p>
+                <div class "w3-container w3-border">
+                    For extra care from your counselor
+                    <textarea id="noteToCounselor" style="width:385px; height:75px" maxlength="120" placeholder="..describe what we can help you with!"></textarea>
+                </div>
+                <button id="closeOverlay" onclick="finalSubmitOff()" class="w3-button w3-black" align="left">Close</button>
+                <button id="finalSubmission" onclick="finalSubmitAppointment()" class="w3-button w3-black" align="right">Submit Appointment</button>
+
+            </body>
+        </div>
     </div>
+
+
     <script type="text/javascript">
         //Global Variables
         var date = new Date(), curFullYear = date.getFullYear(), curMonth = date.getMonth();

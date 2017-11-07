@@ -87,3 +87,27 @@ table {
     z-index: 2;
     /* cursor: pointer; */
 }
+#submissionForm{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #030000;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    background-color: #EBFFF8;
+    border: 5px solid #5202E7;
+}
+#submitFormName{
+    padding-top: 10px;
+    
+    padding-right: 25%;
+    font-size: 18px;
+    
+}
+#submitFormType{
+    font-size: 17px;
+}
+#VerifyYourAppointment{
+    color: #025AFC;
+    font-size: 25px;
+}
