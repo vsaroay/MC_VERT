@@ -70,3 +70,7 @@ table {
     color: red;
     cursor: pointer;
 }
+#TimeSlotsDateDiv {
+ padding-bottom: 50px;   
+ padding: 8px; 
+}

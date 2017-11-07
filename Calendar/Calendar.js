@@ -24,7 +24,6 @@ window.onload = function () {
     //console.log(fDateNums[2]);
     //console.log(fDateNums[3]);
     //console.log("SHOWING MONTH: " + showingMonth);
-
     cssDefault();
     update();
 }
@@ -202,12 +201,15 @@ function selectCell(cell) {
 /** function upDateTimeStops
  * called when a new day is selected
  *  
+ * resets the currTime to default -1
  * updates the "date here" of timeSlots
  * * Unbolds all cells
  * loops through var array monthlyAppointments to find timeSlots that are taken
  * Colors Cellbackgrounds of taken slots 
  */
 function upDateTimeSlots(cell) {
+    currTime = "-1";
+
     var month = fDateNums[1];
     var year = fDateNums[3];
     var date = document.getElementById("TimeSlotsDate");
@@ -226,7 +228,6 @@ function upDateTimeSlots(cell) {
     }
 
 }
-
 
 function selectTime(cell) {
     var myCell;
@@ -262,7 +263,6 @@ function closeDropDown() {
     }
 }
 
-
 /** Function loadAppointments()
  *  loads all appointments of current Month into the global array mothlyAppointments
  *  Use Ajax JS to Call PHP script 
@@ -278,8 +278,8 @@ function loadAppointments() {
 
 /** Function SubmitAppointment()
  * Take parameters and uses Ajax to call PHP Script
- * @param   id
-            cal_date
+ *          id
+            cal_date // year month day
             timeSlot
             status
             appType
@@ -287,9 +287,39 @@ function loadAppointments() {
             counselorNotes
  */
 function SubmitAppointment() {
-    new Ajax.Request('Appointment.php', {
+
+    console.log(" *+*Submitting appointment*+* ");
+    console.log("Year " + showingYear + " Month: " + showingMonth + " day: " + currDay + " timeSlot: " + currTime +
+        "  Status: 1 " + " appType: to be decided studentNotes" + studentNotes);
+
+    if (currTime === "-1") {
+        alert("\tTo schedule an Appointment:\n\t\tPlease Select an Appointment Time");
+        return;
+    }
+    /*new Ajax.Request('Appointment.php', {
         onSuccess: function (xmlHTTP) {
             eval(mlHTTP.responseText);
         }
-    });
+    });*/
+
+    //activateFinalSubmitOverlay()
+}
+
+
+function activateFinalSubmitOverlay() {
+    document.getElementById("FinalSubmitOverLay").style.display = "block";
+}
+
+function finalSubmitOff() {
+    document.getElementById("FinalSubmitOverLay").style.display = "none";
+}
+
+//************* TESTING
+
+function on() {
+    document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
 }

@@ -14,12 +14,31 @@
                     studentNotes
                     counselorNotes
 */
-function createAppointment(id, Cal_date ){
+function createAppointment(){
 
 }
 
-function deleteAppointment(){
+/** function appsInMonth()
+ *   This function goes into the DB and returns an array containing
+ *   all the appointments in the month of a year
+ *      
+ * @param date      //year And month
+ */
+function appsInMonth(){
+    $appointments = array();
     
 }
 
+
+
+
+
+/* function delete Appointment()
+*
+* @param    date        //year And month 
+            timeSlot    //E.g. 9:15     or      11:15
+*/
+function deleteAppointment(){
+    
+}
 ?>
