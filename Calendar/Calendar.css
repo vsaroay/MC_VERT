@@ -35,15 +35,15 @@ table {
 }
 
 .days td {
-    border: 1px solid #074D24;
+    border: 1px solid #14074D;
     height: 25px;
     width: 14.285714%;
-    cursor: pointer;
 }
 
 
 .days td:hover {
     color: red;
+    cursor: pointer;
 }
 
 .dropdown-content {
@@ -62,7 +62,10 @@ table {
     text-decoration: none;
     display: block;
 }
-
-.timeSlot dt {
-    border: 1px solid black;
+#TimeSlots td {
+    padding: 2px;
+}
+#TimeSlots td:hover {
+    color: red;
+    cursor: pointer;
 }
