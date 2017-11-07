@@ -41,4 +41,13 @@ function appsInMonth(){
 function deleteAppointment(){
     
 }
+ /**
+ * Function futureStudentAppointments 
+ *  returns an Array with all the students future appointments in it
+ *
+ * @param student email or student name
+ */
+function futureStudentAppointments(){
+
+}
 ?>
