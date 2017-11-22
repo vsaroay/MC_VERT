@@ -13,7 +13,12 @@
                     appType
                     studentNotes
                     counselorNotes
+
+* refresh
+* then grab parameters
+* then store parameter variables in DB
 */
+
 function createAppointment(){
 
 }

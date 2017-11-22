@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <title>MC-VERT Weekly Calendar</title>
+
+    <!-- <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="WeeklyCalendar.css" type="text/css">
+    <script type="text/javascript" src="WeeklyCalendar.js"></script>
+
+
+</head>
+
+<body>
+    <div class="w3-container w3-border">
+        <div class="ExtraTopSpace"></div>
+        <TABLE id="WeeklyCalendar w3-table w3-striped w3-border">
+            <thead>
+                <TR class="Times">
+                    <TD ALIGN="center" COLSPAN="1">?#date#?</TD>
+                    <TD ALIGN="center" COLSPAN="4">9:00</TD>
+                    <TD ALIGN="center" COLSPAN="4">10:00</TD>
+                    <TD ALIGN="center" COLSPAN="4">11:00</TD>
+                    <TD ALIGN="center" COLSPAN="4">12:00(lunch)</TD>
+                    <TD ALIGN="center" COLSPAN="4">1:00</TD>
+                    <TD ALIGN="center" COLSPAN="4">2:00</TD>
+                    <TD ALIGN="center" COLSPAN="4">3:00</TD>
+                    <TD ALIGN="center" COLSPAN="4">4:00</TD>
+                </TR>
+            </thead>
+            <tbody>
+                <TR class="TimeSlots">
+                    <TD onclick="selectCell(this)" class="day" ALIGN="center">Monday</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" class="LunchTime" COLSPAN="4" ALIGN="center">lunchtime</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                </TR>
+                <TR class="TimeSlots">
+                    <TD onclick="selectCell(this)" class="day" ALIGN="center">Tueday</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" class="LunchTime" COLSPAN="4" ALIGN="center">lunchtime</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                </TR>
+                <TR class="TimeSlots">
+                    <TD onclick="selectCell(this)" class="day" ALIGN="center">Wednesday</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" class="LunchTime" COLSPAN="4" ALIGN="center">lunchtime</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                </TR>
+                <TR class="TimeSlots">
+                    <TD onclick="selectCell(this)" class="day" ALIGN="center">Thursday</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" class="LunchTime" COLSPAN="4" ALIGN="center">lunchtime</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                </TR>
+                <TR class="TimeSlots">
+                    <TD onclick="selectCell(this)" class="day" ALIGN="center">Friday</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" class="LunchTime" COLSPAN="4" ALIGN="center">lunchtime</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                    <TD onclick="selectCell(this)" ALIGN="center">cell</TD>
+                </TR>
+
+
+            </tbody>
+        </table>
+    </div>
+
+</body>

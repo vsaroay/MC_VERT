@@ -1,0 +1,22 @@
+.ExtraTopSpace {
+    min-height: 120px;
+}
+
+.WeeklyCalendar {
+    min-width: 350px;
+    width: 60%;
+    border-style: solid;
+    border-color: green;
+}
+table, th, td {
+    border: 1px solid black;
+}
+.day{
+ padding-left: 10px;
+ padding-right: 10px;
+}
+.LunchTime{
+    border: 1px blue;
+border-style: none;
+background-color: blue;
+}
